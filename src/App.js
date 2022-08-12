@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemCount from './components/ItemCount/ItemCount';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
+
+  const handleOnAdd = (quantity) => {
+    console.log(`la cantidad agregada es ${quantity}`)
+  }
+
   return (
     <div className="App">
+
+    <BrowserRouter>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Navbar/>             {/* El navbar queda afuera de Routes porque se va a mostrar siempre */}
       </header>
-    </div>
+
+      <main className='main'> {/* CREO QUE TENDRIA QUE SACAR EL MAIN Y HEADER )???? */}
+        <Routes>
+          <Route path='/' element={<ItemCount item={'Celular Item'} stock={5} initial={1} onAdd={handleOnAdd} />}/>
+          <Route path='/list' element={<ItemListContainer/>} />
+          <Route path='/detail' element={<ItemDetailContainer/>} />
+        </Routes>
+      </main>
+    
+    </BrowserRouter>
+
+  </div>
   );
 }
 

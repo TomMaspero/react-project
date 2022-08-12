@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+@mixin textMixin($fontSize){
+    padding: 0;
+    margin: 0;
+    font-size: $fontSize;
+    color: black;
+    letter-spacing: -.04rem;
+    font-family: 'Nunito', sans-serif;
+    transition: ease 0.15s;
+}
+
+.cart{
+    text-decoration: none;
+    height: 50%;
+    &__top{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        &--icon{
+            padding: 0;
+            margin: 0 5px 0 0;
+            color: black;
+        }
+        &--count{
+            @include textMixin(1rem);
+            font-weight: bold;
+        }
+    }
+    &__bottom{
+        &--text{
+            @include textMixin(0.85rem);
+        }
+    }
+    &:hover p{
+        color: red;
+    }
+}

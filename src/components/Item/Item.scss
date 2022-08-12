@@ -1,0 +1,53 @@
+.item-container{
+    width: 300px;
+    max-height: 300px;
+    margin: 0 5px;
+}
+
+.item{
+    background-color: #484f5d;
+    border-radius: 5px;
+    margin: 5px 0;
+    &--name{
+        font-family: 'nunito','sans-serif';
+        color: white;
+        background-color: #8790a2;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        margin: 0;
+    }
+    &--description{
+        font-family: 'nunito','sans-serif';
+        color: white;
+        font-size: 16px;
+        margin: 0;
+        padding: 10px 0;
+    }
+    &--img{
+        width: 100px;
+        height: 100px;
+        padding-top: 10px;
+    }
+    &--button{
+        color: rgb(236, 68, 68);
+        font-size: 18px;
+        background-color: rgba(0,0,0,0);
+        border: 1.5px rgb(236, 68, 68) solid;
+        border-radius: 5px;
+        font-family: 'nunito', 'sans-serif';
+        margin: 0 5px;
+        padding: 0px 15px;
+        transition: 0.15s ease-out;
+        &:hover{
+            color:white;
+            border: 1.5px white solid;
+        }
+    }
+    &--stock{
+        font-family: 'nunito','sans-serif';
+        color: white;
+        font-size: 14px;
+        padding: 5px;
+        margin: 5px;
+    }
+}
