@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import '../../style.scss';
 
 .navbar{
-    background-color: #f2f4f7;
+    background-color: $backgroung-color;
     height: 80px;
     width: 100%;
-    // position: fixed;
     top: 0;
     display: flex;
     justify-content: space-around;
@@ -37,6 +36,6 @@
         transition: ease 0.15s;
     }
     &:hover p{
-        color: red;
+        color: $gs-red;
     }
 }

@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import '../../style.scss';
 
 .item-count{
-    margin: 25px;
-    background-color: #484f5d;
-    width: 325px;
-    height: 150px;
+    background-color: none;
+    width: 50%;
+    // height: 150px;
     border-radius: 5px;
     &__top{
         display: flex;
@@ -15,17 +14,18 @@
         }
     }
     &__bottom{
+        padding: 5px;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         width: 100%;
         height: 80%;
         flex-direction: column;
         align-items: center;
         &--button{
-            border: 1.5px solid rgb(236, 68, 68);
+            border: 1.5px solid $gs-red;
             border-radius: 5px;
-            background-color: rgba(0,0,0,0);
-            color: rgb(236, 68, 68);
+            background-color: $gs-red;
+            color: white;
             padding: 6px 10px;
             width: 95%;
             transition: 0.15s ease-out;
@@ -33,9 +33,10 @@
             font-size: 16px;
             font-weight: bold;
             letter-spacing: 1px;
-            margin-bottom: 5px;
+            margin: 5px 0;
             &:hover{
-                color: white;
+                background-color: $gs-red-hover;
+                // color: $gs-red-hover;
                 border: 1.5px solid white;
             }
         }
@@ -43,17 +44,17 @@
 }
 
 .counter{
-    background-color: #8790a2;
+    background-color: none;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
     height: 40px;
     width: 95%;
-    border: darkgrey 2px solid;
+    border: $gs-red 2px solid;
     border-radius: 5px;
     &--button{
-        color: rgb(236, 68, 68);
+        color: $gs-red;
         font-size: 28px;
         background-color: rgba(0,0,0,0);
         border: none;
@@ -61,13 +62,14 @@
         font-weight: bold;
         margin: 0 5px;
         padding: 0 15px;
-        transition: 0.15s ease-out;
+        transition: 0.35s ease-out;
         &:hover{
-            color:white;
+            color:$gs-red-hover;
+            scale: 1.2;
         }
     }
     &--text{
-        color: white;
+        color: black;
         font-size: 20px;
         font-family: 'nunito', 'sans-serif';
     }

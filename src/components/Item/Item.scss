@@ -1,17 +1,16 @@
-.item-container{
-    width: 300px;
-    max-height: 300px;
-    margin: 0 5px;
-}
+@import '../../style.scss';
 
 .item{
-    background-color: #484f5d;
+    width: 300px;
+    height: 320px;
+    list-style: none;
+    background-color: $backgroung-color-dark;
     border-radius: 5px;
-    margin: 5px 0;
+    margin: 5px;
     &--name{
         font-family: 'nunito','sans-serif';
         color: white;
-        background-color: #8790a2;
+        background-color: $backgroung-color-titles;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
         margin: 0;
@@ -24,20 +23,22 @@
         padding: 10px 0;
     }
     &--img{
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        max-width: 100px;
+        max-height: 120px;
         padding-top: 10px;
     }
     &--button{
-        color: rgb(236, 68, 68);
+        color: $gs-red;
         font-size: 18px;
         background-color: rgba(0,0,0,0);
-        border: 1.5px rgb(236, 68, 68) solid;
+        border: 1.5px $gs-red solid;
         border-radius: 5px;
         font-family: 'nunito', 'sans-serif';
         margin: 0 5px;
         padding: 0px 15px;
         transition: 0.15s ease-out;
+        text-decoration: none;
         &:hover{
             color:white;
             border: 1.5px white solid;

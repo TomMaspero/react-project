@@ -3,6 +3,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import CartWidget from '../CartWidget/CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBars, faChessRook, faUser, faGamepad} from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -14,28 +15,30 @@ const Navbar = () => {
 
     return(
         <div className='navbar'>
-            <a className='nav-link' href='#'>
+            <Link to='/' className='nav-link'>
                 <FontAwesomeIcon icon={faBars} className='nav-link__icon'/>
                 <p className='nav-link__text'>Menu</p>
-            </a>
+            </Link>
             {/* <img src={require("images/logo.png")} alt="Logo" className='navbar__logo'/>  */}
-            <img src="images/logo.png" alt="Logo" className='navbar__logo'/> 
+            <Link to='/'>
+                <img src="/images/logo.png" alt="Logo" className='navbar__logo'/> 
+            </Link>
             <Searchbar/>
 
-            <a href='#' className='nav-link'>
+            <Link to='/category/games' className='nav-link'>
                 <FontAwesomeIcon icon={faChessRook} className='nav-link__icon'/>
                 <p className='nav-link__text'>Games</p>
-            </a>
+            </Link>
 
-            <a href='#' className='nav-link'>
+            <Link to='/category/consoles' className='nav-link'>
                 <FontAwesomeIcon icon={faGamepad} className='nav-link__icon'/>
                 <p className='nav-link__text'>Consoles</p>
-            </a>
+            </Link>
 
-            <a href='#' className='nav-link'>
+            <Link to='/' className='nav-link'>
                 <FontAwesomeIcon icon={faUser} className='nav-link__icon'/>
                 <p className='nav-link__text'>Sign In</p>
-            </a>
+            </Link>
 
             <CartWidget/>
 

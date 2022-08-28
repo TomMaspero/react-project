@@ -1,18 +1,20 @@
 import './ItemDetailContainer.scss';
 import {useEffect, useState} from 'react';
 import { getProductById } from '../../asyncMock';
+import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 const ItemDetailContainer = () => {
 
     const [product, setProduct] = useState({});
-    
-    let id = '1';
 
+    // const params = useParams();
+    const { productId } = useParams(); //lo mismo que arriba pero lo desestructuro
     useEffect(() => {
-        getProductById(id)
+        getProductById(productId)
             .then(product => {
                 setProduct(product);
+                console.log(product)
             })
             .catch(error => {
                 console.log("error en el getProductById");
@@ -20,9 +22,8 @@ const ItemDetailContainer = () => {
     }, [])
     
     return(
-        <div>
-            <h2>Detail</h2>
-            <ItemDetail {...product}/>
+        <div className='item-detail-container'>
+            <ItemDetail product={product}/>
         </div>
     )
 }

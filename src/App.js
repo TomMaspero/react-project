@@ -1,33 +1,53 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemCount from './components/ItemCount/ItemCount';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {useState, createContext} from 'react';
+
+import Animation from './components/Animation/Animation'
 
 function App() {
 
-  const handleOnAdd = (quantity) => {
-    console.log(`la cantidad agregada es ${quantity}`)
+  //CLASE 5 MIN 2:35:00 CONTEXT
+  const Context = createContext();
+  
+  //CLASE 5 MIN 2:35:00 CONTEXT
+
+
+  //CLASE 5 MIN 2:25:00
+  const [cart, setCart] = useState([]);
+  const addItem = (productToAdd) => {
+    setCart([...cart, productToAdd])
   }
+  //CLASE 5 MIN 2:25:00
 
   return (
     <div className="App">
 
-    <BrowserRouter>
-      <header className="App-header">
-        <Navbar/>             {/* El navbar queda afuera de Routes porque se va a mostrar siempre */}
-      </header>
+    <Context.Provider value={'string'}>
 
-      <main className='main'> {/* CREO QUE TENDRIA QUE SACAR EL MAIN Y HEADER )???? */}
-        <Routes>
-          <Route path='/' element={<ItemCount item={'Celular Item'} stock={5} initial={1} onAdd={handleOnAdd} />}/>
-          <Route path='/list' element={<ItemListContainer/>} />
-          <Route path='/detail' element={<ItemDetailContainer/>} />
-        </Routes>
-      </main>
+        <BrowserRouter>
+        <header className="App-header">
+          <Navbar/>             {/* El navbar queda afuera de Routes porque se va a mostrar siempre */}
+        </header>
+
+        <main className='main'> {/* CREO QUE TENDRIA QUE SACAR EL MAIN Y HEADER )???? */}
+          <Routes>
+            {/* <Route path='/counter' element={<ItemCount item={'Celular Item'} stock={5} initial={1} onAdd={handleOnAdd} />}/> */}
+            <Route path='/' element={<ItemListContainer/>} />
+            <Route path='/category/:categoryId' element={<ItemListContainer/>} /> {/* todos los productos */}
+            <Route path='/detail/:productId' element={<ItemDetailContainer/>} /> {/* Filtrado */}
+            <Route path='*' element={<h1>404 NOT FOUND</h1>} />
+          </Routes>
+        </main>
+
+      </BrowserRouter>
+
+      {/* <Animation/> */}
+    </Context.Provider>
+
     
-    </BrowserRouter>
 
   </div>
   );

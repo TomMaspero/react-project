@@ -1,11 +1,18 @@
 import {useState} from 'react';
 import './ItemCount.scss';
 
-const ItemCount = ({item, stock, initial, onAdd}) => {
-    const [count, setCount] = useState(initial);
+
+/*
+
+AGREGAR QUE PASA SI EL STOCK INICIAL DE UN ITEM ES 0!!!!
+MOSTRAR "CURRENTLY UNAVAILABLE CON EL BOTON DE COLOR ROJO APAGADO"
+*/
+
+const ItemCount = ({product, onAdd}) => {
+    const [count, setCount] = useState(1); //lo inicializo siempre en 1
 
     const increment = () => {
-        if(count<stock){
+        if(count<product.stock){
             setCount(count+1);
         }
     }
@@ -18,16 +25,16 @@ const ItemCount = ({item, stock, initial, onAdd}) => {
 
     return(
         <div className='item-count'>
-            <div className='item-count__top'>
-                <p className='item-count__top--text'>{item}</p>
-            </div>
+            {/* <div className='item-count__top'>
+                <p className='item-count__top--text'>{product.name}</p>
+            </div> */}
             <div className='item-count__bottom'>
                 <div className='counter'>
                     <button onClick={decrement} className='counter--button'>-</button>
                     <h2 className='counter--text'>{count}</h2>
                     <button onClick={increment} className='counter--button'>+</button>
                 </div>
-                <button onClick={() => onAdd(count)} className='item-count__bottom--button'>Agregar al carrito</button>
+                <button onClick={() => onAdd(count)} className='item-count__bottom--button'>Add to Cart</button>
             </div>
         </div>
     )
