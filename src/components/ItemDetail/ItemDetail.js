@@ -1,23 +1,23 @@
 import './ItemDetail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faStore, faTruck} from '@fortawesome/free-solid-svg-icons'; 
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import ItemCount from '../ItemCount/ItemCount';
+import CartContext from '../../context/CartContext';
 
-const ItemDetail = ({product}) => {
+const ItemDetail = ({ product }) => {
 
     const [quantity, setQuantityToAdd] = useState(0);
+    const {addItem} = useContext(CartContext);
     
     const handleOnAdd = (quantity) => {               
         setQuantityToAdd(quantity);           
-        
-        //CLASE 5 MIN 2:25:00
         const productToAdd = {
-            id, name, price, quantity
+            product, quantity
         }
         addItem(productToAdd);
-        //CLASE 5 MIN 2:25:00
+
     } 
 
     return(

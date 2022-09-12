@@ -1,0 +1,33 @@
+@import '../../style.scss';
+
+.cart{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    &--title{
+        font-family: $font-main;
+        font-size: 22px;
+        margin: 50px 0;
+    }
+    &--price{
+        font-family: $font-main;
+        font-size: 22px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+    &--button{
+        margin-top: 10px;
+        width: fit-content;
+        padding: 5px 10px;
+        border: none;
+        font-size: 22px;
+        border-radius: 5px;
+        background-color: $gs-red;
+        color: $backgroung-color;
+        transition: $transition-main;
+        &:hover{
+            background-color: $gs-red-hover;
+        }
+    }
+}

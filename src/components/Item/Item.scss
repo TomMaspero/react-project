@@ -1,54 +1,53 @@
 @import '../../style.scss';
 
 .item{
-    width: 300px;
-    height: 320px;
-    list-style: none;
-    background-color: $backgroung-color-dark;
+    width: 220px;
+    height: 330px;
+    background-color: white;
     border-radius: 5px;
+    padding: 10px;
     margin: 5px;
-    &--name{
-        font-family: 'nunito','sans-serif';
-        color: white;
-        background-color: $backgroung-color-titles;
-        border-top-right-radius: 5px;
-        border-top-left-radius: 5px;
-        margin: 0;
-    }
-    &--description{
-        font-family: 'nunito','sans-serif';
-        color: white;
-        font-size: 16px;
-        margin: 0;
-        padding: 10px 0;
-    }
-    &--img{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: $transition-main;
+    &__top{
+        align-items: center;
+        justify-content: center;
         width: 100%;
-        max-width: 100px;
-        max-height: 120px;
-        padding-top: 10px;
-    }
-    &--button{
-        color: $gs-red;
-        font-size: 18px;
-        background-color: rgba(0,0,0,0);
-        border: 1.5px $gs-red solid;
-        border-radius: 5px;
-        font-family: 'nunito', 'sans-serif';
-        margin: 0 5px;
-        padding: 0px 15px;
-        transition: 0.15s ease-out;
-        text-decoration: none;
-        &:hover{
-            color:white;
-            border: 1.5px white solid;
+        height: 75%;
+
+        &--img{
+            max-width: 200px;
+            max-height: 200px;
         }
     }
-    &--stock{
-        font-family: 'nunito','sans-serif';
-        color: white;
-        font-size: 14px;
-        padding: 5px;
-        margin: 5px;
+    
+    &__bottom{
+        padding-bottom: 5px;
+        &--name{
+            font-family: 'open sans','sans-serif';
+            font-size: 20px;
+            font-weight: 400;
+            margin: 0;
+        }
+        &--button{
+            color: white;
+            font-size: 18px;
+            background-color: $gs-red;
+            border: none;
+            border-radius: 5px;
+            font-family: 'nunito', 'sans-serif';
+            margin: 0 5px;
+            padding: 0px 15px;
+            transition: 0.15s ease-out;
+            text-decoration: none;
+            &:hover{
+                background-color: $gs-red-hover;
+            }
+        }
+    }
+    &:hover{
+        box-shadow: 5px 5px 15px #888888;
     }
 }

@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
         getProductById(productId)
             .then(product => {
                 setProduct(product);
-                console.log(product)
+                // console.log(product)
             })
             .catch(error => {
                 console.log("error en el getProductById");
