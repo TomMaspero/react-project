@@ -8,12 +8,14 @@ import CartContext from '../../context/CartContext';
 const CartWidget = () => {
 
     const {getQuantity} = useContext(CartContext);
+    let quant = getQuantity();
 
     return (
         <Link to='/cart' className='cart-widget'>
             <div className='cart-widget__top'>
                 <FontAwesomeIcon icon={faCartShopping} className='cart-widget__top--icon'/>
-                <p className='cart-widget__top--count'>{getQuantity()}</p>
+                
+                {quant != 0 ? <p className='cart-widget__top--count'>{quant}</p> : null}
             </div>
             <div>
                 <p className='cart-widget__bottom--text'>Cart</p>

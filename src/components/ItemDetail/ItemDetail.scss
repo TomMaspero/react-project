@@ -74,4 +74,23 @@
             }
         }
     }
+    &--button{
+        border: 1.5px solid $gs-red;
+        border-radius: 5px;
+        background-color: $gs-red;
+        color: white;
+        padding: 6px 10px;
+        width: 15vw;
+        transition: 0.15s ease-out;
+        font-family: 'nunito', 'sans-serif';
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        letter-spacing: 1px;
+        margin: 5px 0;
+        &:hover{
+            background-color: $gs-red-hover;
+            border: 1.5px solid white;
+        }
+    }
 }

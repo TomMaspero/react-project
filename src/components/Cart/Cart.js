@@ -1,20 +1,33 @@
 import './Cart.scss';
 import CartItem from '../CartItem/CartItem';
 import {useContext, useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 import CartContext from '../../context/CartContext';
 
 
 const Cart = () => {
-    const {cart} = useContext(CartContext)
-    if(cart.length === 0) return;
+    const {cart, resetCart} = useContext(CartContext)
 
     const getTotal = (cart) => {
         let total = 0;
         cart.map(prod => {
             total += prod.product.price*prod.quantity; 
         })
-        return total;
+        return total.toFixed(2);
     }
+
+    const handleOnReset = () => {
+        resetCart();
+    }
+
+    if(cart.length === 0) {
+        return(
+            <div className='cart'>
+                <p className='cart--title'>Your shopping cart is empty</p>
+                <Link to="/" className='cart--button'>Browse our products</Link>
+            </div>
+        )
+    };
 
     return(
         <div className='cart'>
@@ -26,6 +39,7 @@ const Cart = () => {
             <p className='cart--price'>Total: ${getTotal(cart)}</p>
 
             <button className='cart--button'>Create Order</button>
+            <button onClick={() => handleOnReset()} className='cart--button'>Reset Cart</button>
         </div>
     )
 }

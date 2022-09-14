@@ -8,6 +8,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
     &__logo{
         width: 160px;
     }
@@ -35,6 +38,37 @@
         font-family: 'Nunito', sans-serif;
         transition: ease 0.15s;
     }
+    &:hover p{
+        color: $gs-red;
+    }
+}
+
+.nav-button{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+    justify-content: space-between;
+    text-decoration: none;
+
+    &__icon{
+        font-size: 26px;
+        padding: 0;
+        margin: 0;
+        color: black;
+    }
+    &__text{
+        padding: 0;
+        margin: 0;
+        font-size: 0.85rem;
+        color: black;
+        letter-spacing: -.04rem;
+        font-family: 'Nunito', sans-serif;
+        transition: ease 0.15s;
+    }
+    
     &:hover p{
         color: $gs-red;
     }

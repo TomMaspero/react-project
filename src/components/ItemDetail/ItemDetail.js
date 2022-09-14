@@ -54,7 +54,7 @@ const ItemDetail = ({ product }) => {
                     quantity === 0 ? (
                         <ItemCount product={product} onAdd={handleOnAdd}/>
                     ) : (
-                        <Link to='/cart'>Al carrito</Link>
+                        <Link to='/cart' className='item-detail--button'>To Cart</Link>
                     )
                 }
 

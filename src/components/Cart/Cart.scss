@@ -26,6 +26,7 @@
         background-color: $gs-red;
         color: $backgroung-color;
         transition: $transition-main;
+        text-decoration: none;
         &:hover{
             background-color: $gs-red-hover;
         }

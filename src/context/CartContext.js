@@ -7,12 +7,15 @@ export const CartContextProvider = ({children}) => {
     
     const addItem = (productToAdd) => {
         setCart([...cart, productToAdd]);
-        // console.log(cart) //por qué no muestra el último que se agregó???
+    }
+
+    const removeItem = (id) => {
+        const newCartWithoutProduct = cart.filter(prod => prod.product.id !== id)
+        setCart(newCartWithoutProduct);
     }
 
     const getQuantity = () => {
         let accu = 0
-
         cart.forEach(prod => {
         accu += prod.quantity
         })
@@ -20,8 +23,16 @@ export const CartContextProvider = ({children}) => {
         return accu
     }
 
+    const isInCart = (id) => {
+        return cart.some(prod => prod.id === id)
+    }
+
+    const resetCart = () => {
+        setCart([]);
+    }
+
     return(
-        <CartContext.Provider value={{cart, addItem, getQuantity}}>
+        <CartContext.Provider value={{cart, addItem, resetCart, getQuantity, isInCart, removeItem}}>
             {children}
         </CartContext.Provider>
     )

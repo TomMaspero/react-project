@@ -1,11 +1,17 @@
 import './CartItem.scss'; 
-
+import CartContext from '../../context/CartContext';
+import {useContext} from 'react';
 
 
 
 
 const CartItem = ({prod, quantity}) => {
 
+    const {removeItem} = useContext(CartContext); 
+
+    const handleOnRemove = (id) => {
+        removeItem(id);
+    }
 
     return(
         <div className='cart-item'>
@@ -13,11 +19,9 @@ const CartItem = ({prod, quantity}) => {
             <p className='cart-item--text'>Quantity: {quantity}</p>
             <p className='cart-item--text'>Price: ${prod.price}</p>
             <p className='cart-item--text'>Subtotal: ${prod.price * quantity}</p>
-            <button className='cart-item--button'>Remove</button>
+            <button onClick={() => handleOnRemove(prod.id)}  className='cart-item--button'>Remove</button>
         </div>
     )
-
-
 }
 
 

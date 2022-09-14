@@ -2,13 +2,14 @@
     &__title{
         color: white;
     }
-    &__ul{
-        list-style: none;
+    &__products{
+        width: 100vw;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
         margin: 0;
         padding: 0;
+        background-color: white;
     }
 }

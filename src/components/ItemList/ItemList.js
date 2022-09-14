@@ -7,11 +7,11 @@ const ItemList = ({products}) => {
 
     return(
         <div className='item-list' onClick={() => console.log('hice click en item-list')}>
-            <ul className='item-list__ul'>
+            <div className='item-list__products'>
                 {products.map(product =>
                     <Item key={product.id} product={product}/>
                 )}
-            </ul>
+            </div>
         </div>
     )
 
