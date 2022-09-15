@@ -1,8 +1,139 @@
 @import '../../style.scss';
 
-.hamb-menu{
-    height: 100vw;
-    width: 40vw;
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
     overflow-y: hidden;
+}
+
+.hamb-menu{
+    width: 25vw;
+    height: 100%;
+    z-index: 5;
+    overflow: auto;
     background-color: $backgroung-color;
+    opacity: 1;
+    display: block;
+    position: absolute;
+    &--subtitle{
+        font-family: $font-gs;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: left;
+        margin: 30px 0 20px 30px;
+    }
+    &__top{
+        width: 25vw;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 5px; 
+        padding: 0 25px 0 20px;
+        background-color: white;
+        align-items: center;
+        top: 0;
+        position: fixed;
+        &--title{
+            font-family: $font-gs;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        &__close{
+            border: none;
+            background-color: white;
+            &--icon{
+                font-size: 22px;
+            }
+            &:hover{
+                color: $gs-red;
+            }
+        }
+    }
+    &__list{
+        width: 100%;
+        &--li{
+            width: 100%;
+        }
+    }
+}
+
+.hamb-link{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-family: $font-gs;
+    width: 100%;
+    display: block;
+    padding: 20px 0 20px 30px;
+    text-align: left;
+    &:hover{
+        background-color: $background-color2;
+    }
+}
+
+.hamb-store{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 70px;
+    text-decoration: none;
+    &__left{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        &--name{
+            font-family: $font-gs;
+            font-weight: bold;
+            font-size: 14px;
+            color: black;
+            text-align: left;
+        }
+        &--time{
+            font-family: $font-gs;
+            font-size: 12px;
+            color: black;
+            text-align: left;
+        }
+    }
+    &__right{
+        height: 100%;
+        padding-top: 8px;
+        &--icon{
+            font-size: 18px;
+            color: black;
+        }
+    }
+    &:hover{
+        .hamb-store__left--name{
+            color: $gs-red;
+        }
+        .hamb-store__left--time{
+            color: $gs-red;
+        }
+        .hamb-store__right--icon{
+            color: $gs-red;
+        }
+    }
+}
+
+.hamb-separator{
+    background-color: #d2d7dc;
+    width: 100%;
+    height: 1px;
+    display: block;
+    margin: 5px 0 5px 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

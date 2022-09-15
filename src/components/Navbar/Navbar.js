@@ -9,17 +9,17 @@ import Menu from '../Menu/Menu';
 
 import {Link} from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({handleMenu}) => {
 
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
 
     return(
-        <div className='navbar'>
-            <button onClick={() => setShow(!show)} to='/' className='nav-button'>
+        <div className='navbar navbar-static-top'>
+            <a onClick={event => handleMenu()} href='#main' className='nav-button'>
                 <FontAwesomeIcon icon={faBars} className='nav-button__icon'/>
                 <p className='nav-button__text'>Menu</p>
-                {show ? <Menu/> : null}
-            </button>
+                {/* {show ? <Menu/> : null} */}
+            </a>
             {/* <img src={require("images/logo.png")} alt="Logo" className='navbar__logo'/>  */}
             <Link to='/'>
                 <img src="/images/logo.png" alt="Logo" className='navbar__logo'/> 
