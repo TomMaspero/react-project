@@ -1,26 +1,55 @@
 import ItemList from '../ItemList/ItemList';
 import './ItemListContainer.scss';
 import {useState, useEffect} from 'react';
-import { getProducts, getProductsByCategory } from '../../asyncMock';
+// import { getProducts, getProductsByCategory } from '../../asyncMock';
 import {useParams} from 'react-router-dom';
+
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { db } from '../../services/firebase'; 
 
 //SE ENCARGA DE HACER EL PEDIDO A LA API
 
 const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     const {categoryId} = useParams();
-    
+
     useEffect(() => {
 
-        const asyncFunction = categoryId ? getProductsByCategory : getProducts;
+        setLoading(true);
 
-        asyncFunction(categoryId).then(products => {    //lo mismo que lo de abajo pero escrito de otra manera
-            setProducts(products);
+        const collectionRef = !categoryId
+        ? collection(db, 'products')
+        : query(collection(db, 'products'), where('category', '==', categoryId));
+
+        getDocs(collectionRef).then(response => {
+            const productsAdapted = response.docs.map(doc => {
+                const data = doc.data();
+                return { id: doc.id, ...data}
+            })
+            setProducts(productsAdapted);
         }).catch(error => {
-            console.log("error in ItemListContainer's asyncFunction");
+            console.log(error)
+        }).finally(() => {
+            setLoading(false)
         })
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////// ASYNC MOCK
+        // const asyncFunction = categoryId ? getProductsByCategory : getProducts;
+
+        // asyncFunction(categoryId).then(products => {    //lo mismo que lo de abajo pero escrito de otra manera
+        //     setProducts(products);
+        // }).catch(error => {
+        //     console.log("error in ItemListContainer's asyncFunction");
+        // })
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////// DONT USE THIS NOW
         // if(!categoryId){
         //     getProducts().then(products => {    //PEDIDO A LA API
         //         setProducts(products);
@@ -29,7 +58,13 @@ const ItemListContainer = () => {
         //     getProductsByCategory(categoryId).then(products => {
         //         setProducts(products)
         //     })
-        // }
+        // } /////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
     },[categoryId]) //renderiza de nuevo cuando se cambia la categoría
 
     return(

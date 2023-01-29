@@ -2,9 +2,42 @@
 
 # Gamestop clone
 
+Made with React.js as a learning project
+
 -----
 
-Made with React.js as a learning project
+## <u>Componentes</u>:
+
+1. <u>**Navbar**</u>: Siempre visible. Contiene los componentes de **Searchbar** y **CartWidget**, junto con los links a otras secciones de la app. 
+
+   Recibe como props la función **handleMenu**, la cual se ejecuta tras el evento **onClick** en el ícono de tres barras.
+
+2. <u>**Menu**</u>: Se muestra cuando se ejecuta **handleMenu** en el **Navbar**. Abre un modal que impide scrollear el resto del sitio y el menú a la izquierda. Al hacer click en la cruz o fuera del menú se ejecuta nuevamente la función **handleMenu** y se deja de mostrar el componente. 
+
+   Sólamente contiene links a otras secciones. 
+
+3. **<u>Searchbar</u>**: Falta terminarlo...
+
+4. **<u>ItemListContainer</u>**: 
+
+   
+
+5. 
+
+
+
+## <u>Variables</u>:
+
+1. **<u>searchterm</u>**: **string**, utilizada en el componente **Searchbar**, se usa con el hook useState 
+2. **<u>products</u>**: **array**, utilizado en los componentes **ItemListContainer** .... 
+
+
+
+## **Funciones**:
+
+1. **<u>handleMenu</u>**: 
+
+
 
 
 

@@ -1,8 +1,10 @@
 import './ItemDetailContainer.scss';
 import {useEffect, useState} from 'react';
-import { getProductById } from '../../asyncMock';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
+
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from '../../services/firebase';
 
 const ItemDetailContainer = () => {
 
@@ -11,15 +13,19 @@ const ItemDetailContainer = () => {
     // const params = useParams();
     const { productId } = useParams(); //lo mismo que arriba pero lo desestructuro
     useEffect(() => {
-        getProductById(productId)
-            .then(product => {
-                setProduct(product);
-                // console.log(product)
-            })
-            .catch(error => {
-                console.log("error en el getProductById");
-            })
-    }, [])
+
+        getDoc(doc(db, 'products', productId)).then(response => {
+            const data = response.data();
+            const productAdapted = {id: response.id, ...data}
+            setProduct(productAdapted);
+        }).catch(error => {
+            console.log(error)
+        })
+        // .finally(() => {
+        //     setLoading(false);
+        // })
+
+    }, [productId])
     
     return(
         <div className='item-detail-container'>

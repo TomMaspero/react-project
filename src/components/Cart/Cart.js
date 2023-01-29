@@ -38,7 +38,7 @@ const Cart = () => {
             
             <p className='cart--price'>Total: ${getTotal(cart)}</p>
 
-            <button className='cart--button'>Create Order</button>
+            <Link to='/checkout' className='cart--button'>Checkout</Link>
             <button onClick={() => handleOnReset()} className='cart--button'>Reset Cart</button>
         </div>
     )
