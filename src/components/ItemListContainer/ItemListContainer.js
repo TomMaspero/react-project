@@ -1,11 +1,15 @@
 import ItemList from '../ItemList/ItemList';
 import './ItemListContainer.scss';
 import {useState, useEffect} from 'react';
-// import { getProducts, getProductsByCategory } from '../../asyncMock';
 import {useParams} from 'react-router-dom';
 
-import { getDocs, collection, query, where } from 'firebase/firestore';
-import { db } from '../../services/firebase'; 
+///////////////////     ASYNC MOCK
+import { getProducts, getProductsByCategory } from '../../asyncMock';
+
+
+////////////////////    FIREBASE
+// import { getDocs, collection, query, where } from 'firebase/firestore';
+// import { db } from '../../services/firebase'; 
 
 //SE ENCARGA DE HACER EL PEDIDO A LA API
 
@@ -19,48 +23,37 @@ const ItemListContainer = () => {
 
         setLoading(true);
 
-        const collectionRef = !categoryId
-        ? collection(db, 'products')
-        : query(collection(db, 'products'), where('category', '==', categoryId));
+        //////////////////////////////////////////// FIREBASE
 
-        getDocs(collectionRef).then(response => {
-            const productsAdapted = response.docs.map(doc => {
-                const data = doc.data();
-                return { id: doc.id, ...data}
-            })
-            setProducts(productsAdapted);
-        }).catch(error => {
-            console.log(error)
-        }).finally(() => {
-            setLoading(false)
-        })
+        // const collectionRef = !categoryId
+        // ? collection(db, 'products')
+        // : query(collection(db, 'products'), where('category', '==', categoryId));
 
-
-
-
-
-        ///////////////////////////////////////////////////////////////////////////////////// ASYNC MOCK
-        // const asyncFunction = categoryId ? getProductsByCategory : getProducts;
-
-        // asyncFunction(categoryId).then(products => {    //lo mismo que lo de abajo pero escrito de otra manera
-        //     setProducts(products);
+        // getDocs(collectionRef).then(response => {
+        //     const productsAdapted = response.docs.map(doc => {
+        //         const data = doc.data();
+        //         return { id: doc.id, ...data}
+        //     })
+        //     setProducts(productsAdapted);
         // }).catch(error => {
-        //     console.log("error in ItemListContainer's asyncFunction");
+        //     console.log(error)
+        // }).finally(() => {
+        //     setLoading(false)
         // })
-        //////////////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////////////////////// DONT USE THIS NOW
-        // if(!categoryId){
-        //     getProducts().then(products => {    //PEDIDO A LA API
-        //         setProducts(products);
-        //     })
-        // } else {
-        //     getProductsByCategory(categoryId).then(products => {
-        //         setProducts(products)
-        //     })
-        // } /////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////
 
 
+
+
+        /////////////////////////////////////////////////////////////////////////////////// ASYNC MOCK
+        const asyncFunction = categoryId ? getProductsByCategory : getProducts;
+
+        asyncFunction(categoryId).then(products => {    //lo mismo que lo de abajo pero escrito de otra manera
+            setProducts(products);
+        }).catch(error => {
+            console.log("error in ItemListContainer's asyncFunction");
+        })
+        ////////////////////////////////////////////////////////////////////////////////////
 
 
 

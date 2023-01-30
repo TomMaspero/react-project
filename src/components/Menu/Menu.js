@@ -17,7 +17,7 @@ const Menu = ({handleMenu}) => {
                     <p className='hamb-menu__top--title'>Menu</p>
                     <button onClick={event => handleMenu()} className='hamb-menu__top__close'><FontAwesomeIcon className='hamb-menu__top__close--icon' icon={faXmark}/></button>
                 </div>
-                <Link to='/' className='hamb-store'>
+                <Link to='/' onClick={event => handleMenu()} className='hamb-store'>
                     <div className='hamb-store__left'>
                         <p className='hamb-store__left--name'>Ross Henderson Shopping Center - GameStop</p>
                         <p className='hamb-store__left--time'>Open until 9:00 PM</p>
@@ -30,34 +30,37 @@ const Menu = ({handleMenu}) => {
                 <p className='hamb-menu--subtitle'>Shop by Category</p>
                 <ul className='hamb-menu__list'>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Video Games</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>All</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Consoles {'&'} Hardware</Link>
+                        <Link to='/category/games' onClick={event => handleMenu()} className='hamb-link'>Video Games</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Gaming Accesories</Link>
+                        <Link to='/category/consoles' onClick={event => handleMenu()} className='hamb-link'>Consoles {'&'} Hardware</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>PC</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>Gaming Accesories</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Electronics</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>PC</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Collectibles</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>Electronics</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Toys {'&'} Games</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>Collectibles</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Home</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>Toys {'&'} Games</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Clothing</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>Home</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link' style={{fontWeight:'bold', color:'red'}}>Deals</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>Clothing</Link>
+                    </li>
+                    <li className='hamb-menu__list--li'>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link' style={{fontWeight:'bold', color:'red'}}>Deals</Link>
                     </li>
 
                 </ul>
@@ -65,10 +68,10 @@ const Menu = ({handleMenu}) => {
                 <p className='hamb-menu--subtitle'>Support</p>
                 <ul className='hamb-menu__list'>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Contact us</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>Contact us</Link>
                     </li>
                     <li className='hamb-menu__list--li'>
-                        <Link to='/' className='hamb-link'>Frequently Asked Questions</Link>
+                        <Link to='/' onClick={event => handleMenu()} className='hamb-link'>Frequently Asked Questions</Link>
                     </li>
                 </ul>
             </nav>

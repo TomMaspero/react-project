@@ -1,3 +1,5 @@
+@import '../../style.scss';
+
 .searchbar{
     width: 40%;
     height: 40px;
@@ -12,5 +14,27 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
+    }
+}
+
+.results-container{
+    width: 100%;
+    background-color: $background-color;
+    list-style: none;
+    
+    &__result{
+        width: 100%;
+            &--link{
+                width: 100%;
+                display: block;
+                color: black;
+                font-family: $font-main;
+                text-decoration: none;
+                font-size: 28px;
+                padding: 3px 0;
+                &:hover{
+                    background-color: $background-color2;
+                }
+            }
     }
 }

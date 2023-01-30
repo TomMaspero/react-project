@@ -6,7 +6,7 @@
     justify-content: space-around;
     padding: 20px 10px;
     margin: 10px 0;
-    background-color: $backgroung-color;
+    background-color: $background-color;
     border-radius: 5px;
     align-items: center;
 
@@ -29,7 +29,7 @@
         border: none;
         border-radius: 5px;
         padding: 5px 10px;
-        color: $backgroung-color;
+        color: $background-color;
 
         &:hover{
             background-color: $gs-red-hover;

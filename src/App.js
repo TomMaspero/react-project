@@ -13,11 +13,11 @@ import {useState, useEffect} from 'react';
 
 function App() {
 
-  const [show, setShow] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [current, setCurrent] = useState(false);
 
   const handleMenu = () => {         {/*MOVER ESTA LOGICA A OTRO COMPONENTE (MENU CONTAINER???)*/}
-    setShow(!show);
+    setShowMenu(!showMenu);
     document.body.classList.toggle('block-overflow');
   }
 
@@ -29,7 +29,7 @@ function App() {
       <Navbar handleMenu={handleMenu}/>             {/* El navbar queda afuera de Routes porque se va a mostrar siempre */}
     </header>
 
-    {show ? <Menu handleMenu={handleMenu}/> : null}
+    {showMenu ? <Menu handleMenu={handleMenu}/> : null}
 
     
     <main className='main' id='main'> 

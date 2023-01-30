@@ -2,7 +2,7 @@
 
 # Gamestop clone
 
-Made with React.js as a learning project
+Made with React.js & Google Firebase as a learning project
 
 -----
 
@@ -16,7 +16,7 @@ Made with React.js as a learning project
 
    Sólamente contiene links a otras secciones. 
 
-3. **<u>Searchbar</u>**: Falta terminarlo...
+3. **<u>Searchbar</u>**: Muestra los productos que estén dentro de la base de datos cuyo nombre incluya los caracteres que se ingresan. Para evitar que aparezcan demasiados links al ingresar una sola letra, solamente comienza a comparar los strings cuando se ingresan 2 caracteres. 
 
 4. **<u>ItemListContainer</u>**: 
 
@@ -38,6 +38,12 @@ Made with React.js as a learning project
 1. **<u>handleMenu</u>**: 
 
 
+
+•**Obs:**
+
+> **• z-index**: Tanto el searchbar como el menú hamburguesa usan el mismo modal, el cual tiene un z-index = 3. Luego el menú hamburguesa tiene un z-index = 5 y los resultados del searchbar un z-index = 4.
+
+​	
 
 
 
