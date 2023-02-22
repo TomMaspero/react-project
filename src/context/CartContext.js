@@ -23,6 +23,14 @@ export const CartContextProvider = ({children}) => {
         return accu
     }
 
+    const getTotal = () => {
+        let total = 0;
+        cart.map(prod => {
+            total += prod.product.price*prod.quantity; 
+        })
+        return total.toFixed(2);
+    }
+
     const isInCart = (id) => {
         return cart.some(prod => prod.id === id)
     }
@@ -32,7 +40,7 @@ export const CartContextProvider = ({children}) => {
     }
 
     return(
-        <CartContext.Provider value={{cart, addItem, resetCart, getQuantity, isInCart, removeItem}}>
+        <CartContext.Provider value={{cart, addItem, resetCart, getQuantity, getTotal, isInCart, removeItem}}>
             {children}
         </CartContext.Provider>
     )

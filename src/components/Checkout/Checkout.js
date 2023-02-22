@@ -26,6 +26,8 @@ const Checkout = () => {
             date: new Date(),
         }
 
+        console.log(objOrder);
+
         const orderRef = collection(db, 'orders');
         addDoc(orderRef, objOrder).then( response => {
             console.log(response)                           ///borrar el console log
@@ -34,10 +36,10 @@ const Checkout = () => {
     }
 
     return (
-        <>
-            <h1 className='title'>Checkout</h1>
-            <button className='Option' onCLick={createOrder}>Generar Orden</button>
-        </>
+        <div className='checkout'>
+            <h1 className='checkout__title'>Checkout</h1>
+            <button className='checkout__button' onClick={createOrder}>Generar Orden</button>
+        </div>
     )
 }
 

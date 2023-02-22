@@ -6,15 +6,7 @@ import CartContext from '../../context/CartContext';
 
 
 const Cart = () => {
-    const {cart, resetCart} = useContext(CartContext)
-
-    const getTotal = (cart) => {
-        let total = 0;
-        cart.map(prod => {
-            total += prod.product.price*prod.quantity; 
-        })
-        return total.toFixed(2);
-    }
+    const {cart, resetCart, getTotal} = useContext(CartContext)
 
     const handleOnReset = () => {
         resetCart();

@@ -6,7 +6,7 @@ import './ItemList.scss';
 const ItemList = ({products}) => {
 
     return(
-        <div className='item-list' onClick={() => console.log('hice click en item-list')}>
+        <div className='item-list'>
             <div className='item-list__products'>
                 {products.map(product =>
                     <Item key={product.id} product={product}/>

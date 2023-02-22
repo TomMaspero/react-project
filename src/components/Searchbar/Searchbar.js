@@ -3,31 +3,31 @@ import {useEffect, useState, useRef} from 'react';
 import {Link} from 'react-router-dom';
 
 ///////////////////             ASYNC MOCK
-import {products, getProducts} from '../../asyncMock';
+// import {products, getProducts} from '../../asyncMock';
 
 ////////////////////////////    FIREBASE
-// import { getDocs, collection} from 'firebase/firestore';
-// import { db } from '../../services/firebase';
+import { getDocs, collection} from 'firebase/firestore';
+import { db } from '../../services/firebase';
 
 const Searchbar = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [showResults, setShowResults] = useState('false');
     
     /////////////////////////////////////////////////////       FIREBASE
-    // const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
-    //Esto es casi lo mismo que está en ItemListContainer, capaz lo puedo juntar
-    //para que llame solamente 1 vez a la base de datos?
-    // useEffect(() => {
-    //     getDocs(collection(db, 'products')).then(response => {
-    //         const productsAdapted = response.docs.map(doc => {
-    //             const data = doc.data();
-    //             return {id: doc.id, ...data}
-    //         })
-    //         setProducts(productsAdapted);
-    //     }).catch(error => console.log(error))
-    // },[searchTerm])
-    //^^^
+    ////// Esto es casi lo mismo que está en ItemListContainer, capaz lo puedo juntar
+    ////// para que llame solamente 1 vez a la base de datos?
+    useEffect(() => {
+        getDocs(collection(db, 'products')).then(response => {
+            const productsAdapted = response.docs.map(doc => {
+                const data = doc.data();
+                return {id: doc.id, ...data}
+            })
+            setProducts(productsAdapted);
+        }).catch(error => console.log(error))
+    },[searchTerm])
+    ///////////////////////////////////////////////////////////////
 
     const resetSearch = () => {
         setSearchTerm = '';
