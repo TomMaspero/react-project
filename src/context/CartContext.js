@@ -4,9 +4,40 @@ const CartContext = createContext();
 
 export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([]);
-    
+
     const addItem = (productToAdd) => {
-        setCart([...cart, productToAdd]);
+
+        if(isInCart(productToAdd.product.id) == false){
+            setCart([...cart, productToAdd]);
+        }
+        else {
+            //tengo que actualizar la cantidad
+            // console.log("Ya está en el carrito!")
+            
+            let index = findProduct(productToAdd.product.id);
+
+            updateQuantity(index, productToAdd.quantity);
+
+            setCart([...cart]); //para que se re-renderice el widget correctamente (no estoy seguro si esto es correcto)
+        }
+    }
+
+    const updateQuantity = (productIndex, addedQuantity) => {   //función solamente usada en addItem()
+        let newQuantity = cart[productIndex].quantity + addedQuantity;
+        cart[productIndex].quantity = newQuantity;
+    }
+
+    const findProduct = (id) => {   //función solamente usada en addItem()
+        let index = 0;
+        if(cart.length > 0){
+            for(const prod in cart){
+                if(cart[prod].product.id == id){break}
+                else{
+                    index++;
+                }
+            }
+        }
+        return index;
     }
 
     const removeItem = (id) => {
@@ -32,7 +63,7 @@ export const CartContextProvider = ({children}) => {
     }
 
     const isInCart = (id) => {
-        return cart.some(prod => prod.id === id)
+        return cart.some(prod => prod.product.id === id)
     }
 
     const resetCart = () => {
