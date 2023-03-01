@@ -2,13 +2,14 @@ import ItemList from '../ItemList/ItemList';
 import './ItemListContainer.scss';
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
+// import firebase from 'firebase/compat/app';
 
 ///////////////////     ASYNC MOCK
 // import { getProducts, getProductsByCategory } from '../../asyncMock';
 
 
 ////////////////////    FIREBASE
-import { getDocs, collection, query, where } from 'firebase/firestore';
+import { getDocs, collection, query, where } from 'firebase/firestore/lite';
 import { db } from '../../services/firebase'; 
 
 //SE ENCARGA DE HACER EL PEDIDO A LA API

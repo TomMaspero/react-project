@@ -3,13 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Item = ({product}) => {
 
-    const handleClick = (e) => {
-        e.stopPropagation()
-        console.log('hice click en el item')
-    }
-
     return(
-        <div className='item-container' onClick={handleClick}>    
+        <div className='item-container'>    
                 <div className='item'>
                     <div className='item__top'>
                         <img className='item__top--img' src={`/${product.img}`}/>

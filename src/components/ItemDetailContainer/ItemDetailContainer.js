@@ -7,7 +7,7 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 // import { getProductById } from '../../asyncMock';
 
 ////////////////////////////////////////////////////////    FIREBASE
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore/lite';
 import { db } from '../../services/firebase';
 
 const ItemDetailContainer = () => {

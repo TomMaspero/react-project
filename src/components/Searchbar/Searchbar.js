@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 // import {products, getProducts} from '../../asyncMock';
 
 ////////////////////////////    FIREBASE
-import { getDocs, collection} from 'firebase/firestore';
+import { getDocs, collection} from 'firebase/firestore/lite';
 import { db } from '../../services/firebase';
 
 const Searchbar = () => {
