@@ -4,10 +4,13 @@ import CartContext from '../../context/CartContext';
 
 import { db } from '../../services/firebase';
 import { addDoc, collection, getDocs, query, where, documentId, writeBatch } from 'firebase/firestore/lite';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [orderCreated, setOrderCreated] = useState(false); 
     const { cart, getQuantity, getTotal, resetCart } = useContext(CartContext)
+    const navigate = useNavigate();
 
     const totalQuantity = getQuantity();
     const total = getTotal();
@@ -70,6 +73,10 @@ const Checkout = () => {
                 console.log(`El id de su ordern es: ${orderAdded.id}`);
 
                 resetCart();
+                setOrderCreated(true);
+                setTimeout(() => {
+                    navigate('/');
+                }, 3000);
             } else {
                 console.log("Error, falta de stock");
             }
@@ -88,8 +95,17 @@ const Checkout = () => {
     if(isLoading) {
         return (
             <div className='checkout'>
-                <h1 className='checkout__title'>Se está generando tu orden...</h1>
+                <h1 className='checkout__title'>Your order is being processed...</h1>
 
+            </div>
+        )
+    }
+
+    if(orderCreated){
+        return (
+            <div className='checkout'>
+                <h1 className='checkout__title'>Your order was created succesfully!</h1>
+                <h2 className='checkout_subtitle'> You will be redirected to the Home page in 3 seconds...</h2>
             </div>
         )
     }
