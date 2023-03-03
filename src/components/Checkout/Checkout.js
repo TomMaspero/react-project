@@ -4,11 +4,50 @@ import CartContext from '../../context/CartContext';
 
 import { db } from '../../services/firebase';
 import { addDoc, collection, getDocs, query, where, documentId, writeBatch } from 'firebase/firestore/lite';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [orderCreated, setOrderCreated] = useState(false); 
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    // const [submitError, setSubmitError] = useState(false);
+
+    const [buyer, setBuyer] = useState({
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        address: '',
+        email: '',
+    });
+    
+    const handleChange = (event) => {
+        setBuyer({...buyer, [event.target.name]: event.target.value})
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault(); 
+
+        // setSubmitError(false);
+        // for(var prop in Object.values(buyer)){
+        //     if(Object.values(buyer)[prop] === ''){
+        //         // console.log(Object.values(buyer)[prop]);
+        //         // console.log(submitError)
+        //         setSubmitError(true);
+        //     }
+        // }
+        // console.log(submitError)
+        // if(submitError==false){
+        //     console.log('se submitio')
+        // } else {console.log("ERROR!");}
+        
+        setFormSubmitted(true);
+        // setBuyer({firstName:'', lastName:'', address:'', phoneNumber:'', email:''}) //NO ESTOY SEGURO QUE ESTO HAGA FALTA!
+    }
+
+    const goBack = () => {
+        setFormSubmitted(false);
+    }
+
     const { cart, getQuantity, getTotal, resetCart } = useContext(CartContext)
     const navigate = useNavigate();
 
@@ -19,12 +58,7 @@ const Checkout = () => {
         setIsLoading(true);
         try{
             const objOrder = {
-                buyer: {
-                    firstName: 'Diego',             //Cambiar esto con los datos ingresados en el formulario
-                    lastName: 'Crespo',
-                    phone: '223111111',
-                    address: 'calle falsa 123',
-                },
+                buyer,
                 items: cart, 
                 totalQuantity,
                 total,
@@ -35,12 +69,6 @@ const Checkout = () => {
     
             const productsRef = collection(db, 'products');
     
-            // getDocs(query(productsRef, where(documentId(), 'in', ids))).then(response => console.log(response)).catch(error => {console.log(error)});
-            //La función getDocs busca los documentos que cumplan con la consulta
-            //de la colección de productos cuyos IDs (traídos desde Firestore con la función DocumentId)
-            //y usamos el operador "in" para indicarle que tienen que estar dentro de mi array de ids "ids". 
-    
-            //Lo mismo que arriba pero con async/await
             const producstAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)));
     
             const { docs } = producstAddedFromFirestore;
@@ -111,9 +139,50 @@ const Checkout = () => {
     }
 
     return (
-        <div className='checkout'>
-            <h1 className='checkout__title'>Checkout</h1>
-            <button className='checkout__button' onClick={createOrder}>Generar Orden</button>
+        <div>
+            {formSubmitted==false ? 
+            (
+                <div className='checkout'>            
+                    <h1 className='checkout__title'>Checkout</h1>
+                    <form className='form'>
+                        <div className='form__row'>
+                            <h3 className='form__title'>Please, fill in your details</h3>
+                        </div>
+                        <div className='form__row'>
+                            <input className='form__inputField' type='text' name='firstName' placeholder='First Name' value={buyer.firstName} onChange={handleChange}/>
+                        </div>
+                        <div className='form__row'>
+                            <input className='form__inputField' type='text' name='lastName' placeholder='Last Name' value={buyer.lastName} onChange={handleChange}/>
+                        </div>
+                        <div className='form__row'>
+                            <input className='form__inputField' type='number' name='phoneNumber' placeholder='Phone Number' value={buyer.phoneNumber} onChange={handleChange}/>
+                        </div>
+                        <div className='form__row'>
+                            <input className='form__inputField' type='text' name='address' placeholder='Address' value={buyer.address} onChange={handleChange}/>
+                        </div>
+                        <div className='form__row'>
+                            <input className='form__inputField' type='text' name='email' placeholder='Email' value={buyer.email} onChange={handleChange}/>
+                        </div>
+                    </form>
+                    <div className='checkout__bottom'>
+                        <Link className='checkout__bottom--button' to='/cart'>Back to cart</Link>
+                        <button className='checkout__bottom--button' onClick={handleSubmit}>Submit</button>
+                    </div>
+                </div>
+            ):(
+                <div className='checkout'>
+                    <div className='checkout__final'>
+                        <h2 className='checkout__final--title'>Please make sure your details are correct</h2>
+                        <p className='checkout__final--text'>First name: {buyer.firstName}</p>
+                        <p className='checkout__final--text'>Last Name: {buyer.lastName}</p>
+                        <p className='checkout__final--text'>Phone Number: {buyer.phoneNumber}</p>
+                        <p className='checkout__final--text'>Address: {buyer.address}</p>
+                        <p className='checkout__final--text'>E-mail: {buyer.email}</p>
+                    </div>
+                    <button className='checkout__bottom--button' onClick={(goBack)}>Back</button>
+                    <button className='checkout__bottom--button' onClick={createOrder}>Submit Order</button>
+                </div>
+            )}
         </div>
     )
 }

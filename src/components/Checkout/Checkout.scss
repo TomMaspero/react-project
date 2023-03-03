@@ -3,12 +3,62 @@
 .checkout{
     margin-top: 200px;
     &__title{
-
+        font-size: 32px;
+        font-family: $font-main;
+        margin-bottom: 10px;
     }
     &__subtitle{
-        
+        font-size: 20px;
+        font-family: $font-main;
     }
-    &__button{
+    &__bottom{
+        display: flex;
+        &--button{
+            border: 1.5px solid $gs-red;
+            border-radius: 5px;
+            background-color: $gs-red;
+            color: white;
+            padding: 6px 10px;
+            width: 12vw;
+            transition: 0.15s ease-out;
+            font-family: $font-main;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+            margin: 10px 5px;
+            &:hover{
+                background-color: $gs-red-hover;
+                border: 1.5px solid white;
+            }
+        }
+    }
+    &__final{
+        margin-bottom: 23px;
+        &--title{
+            font-size: 28px;
+            font-family: $font-main;
+            margin-bottom: 30px;
+        }
+        &--text{
+            font-size: 24px;
+            font-family: $font-main;
+            margin-bottom: 7px;
+            text-align: left;
+        }
+    }
+}
 
+.form{
+    &__row{
+        margin-bottom: 5px;
     }
+    &__title{
+        font-family: $font-main;
+    }
+    &__inputField{
+        font-family: $font-main;
+        font-size: 16px;
+    }
+
 }
