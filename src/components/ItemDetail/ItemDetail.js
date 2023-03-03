@@ -30,9 +30,6 @@ const ItemDetail = ({ product }) => {
                 <h2 className='item-detail__right--name'>{product.name}</h2>
                 <p className='item-detail__right--price'>${product.price}</p>
 
-
-                {/* ESTO DE ABAJO METERLO EN EL COUNTER: VER PAGINA DE GAMESTOP, AL SCROLLEAR SE MANTIENE PEGADO */}
-
                 <div className='item-detail__right__stock'>
                     <FontAwesomeIcon icon={faStore} className='item-detail__right__stock--icon'/>
                     <div className='item-detail__right__stock__top'>
