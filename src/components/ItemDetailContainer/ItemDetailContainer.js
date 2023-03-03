@@ -14,6 +14,7 @@ const ItemDetailContainer = () => {
 
     const [product, setProduct] = useState({});
     const { productId } = useParams(); //lo mismo que arriba pero lo desestructuro
+    const [loading, setLoading] = useState(true);
 
     /////////////////////////////////////////////////////////       ASYNC MOCK
     // useEffect(() => {
@@ -31,6 +32,8 @@ const ItemDetailContainer = () => {
 
     //////////////////////////////////////////////////////////      FIREBASE
     useEffect(() => {
+        setLoading(true);
+
         getDoc(doc(db, 'products', productId)).then(response => {
             const data = response.data();
             const productAdapted = {id: response.id, ...data}
@@ -38,15 +41,25 @@ const ItemDetailContainer = () => {
         }).catch(error => {
             console.log(error)
         })
-        // .finally(() => {
-        //     setLoading(false);
-        // })
+        .finally(() => {
+            setLoading(false);
+        })
     }, [productId])
     ///////////////////////////////////////////////////////////////
     
     return(
-        <div className='item-detail-container'>
-            <ItemDetail product={product}/>
+        <div>
+        {
+            loading ? (
+                <div className='item-detail-container'>
+                    <h1 className='item-detail-container--title'>Your product is loading...</h1>
+                </div>
+            ) : (
+                <div  className='item-detail-container'>
+                    <ItemDetail product={product}/>
+                </div>
+            )
+        }
         </div>
     )
 }

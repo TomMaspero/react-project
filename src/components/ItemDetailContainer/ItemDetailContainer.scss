@@ -1,10 +1,9 @@
-// .item-detail-container{
-//     // display: flex;
-//     // flex-direction: column;
-//     // justify-content: center;
-//     // align-items: center;
-// }
+@import '../../style.scss';
 
 .item-detail-container{
     margin-top: 85px;
+    &--title{
+        font-family: $font-main;
+        font-size: 34px;
+    }
 }

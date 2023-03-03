@@ -12,8 +12,6 @@ import {useParams} from 'react-router-dom';
 import { getDocs, collection, query, where } from 'firebase/firestore/lite';
 import { db } from '../../services/firebase'; 
 
-//SE ENCARGA DE HACER EL PEDIDO A LA API
-
 const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]);
@@ -40,11 +38,8 @@ const ItemListContainer = () => {
             console.log(error)
         }).finally(() => {
             setLoading(false)
-        })
+        });
         ///////////////////////////////////////////////////////
-
-
-
 
         ////////////////////////////////////////////////////////////// ASYNC MOCK
         // const asyncFunction = categoryId ? getProductsByCategory : getProducts;
@@ -56,12 +51,22 @@ const ItemListContainer = () => {
         // })
         //////////////////////////////////////////////////////////////
 
-    },[categoryId]) //renderiza de nuevo cuando se cambia la categoría
+    },[categoryId]);
 
     return(
-        <div className='item-list-container'>
-            <ItemList products={products}/>
+        <div>
+            {loading ? (
+                <div className='item-list-container'> 
+                    <h1 className='item-list-container--title'>Loading products...</h1>
+                </div>
+
+            ) : (
+                <div className='item-list-container'>
+                    <ItemList products={products}/>
+                </div>
+            )}
         </div>
+
     )
 }
 

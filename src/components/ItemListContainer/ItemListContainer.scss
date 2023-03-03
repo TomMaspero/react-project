@@ -1,6 +1,12 @@
+@import '../../style.scss';
+
 .item-list-container{
     margin-top: 85px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    &--title{
+        font-family: $font-main;
+        font-size: 34px;
+    }
 }
