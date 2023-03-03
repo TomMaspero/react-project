@@ -4,6 +4,13 @@
 
 Made with React.js & Google Firebase as a learning project
 
+Link: https://gs-clone.web.app/
+
+Un E-Commerce sencillo que cumple las funcionalidades de mostrar los productos desde la base de datos (hosteada en Firestore), buscarlos por categorías o a través de la barra de búsqueda. Luego los podemos agregar al carrito, llenar un formulario con nuestros datos y finalizar la compra, generando una orden que se guarda de vuelta en la base de datos. 
+Al momento de generar la orden, la app vuelve a chequear con la base de datos que el stock de cada uno de los productos elegidos esté disponible. Si todos los productos pasan el chequeo, se genera la orden de compra con un ID único (generado por Firebase) y se redirige al usuario hacia el Home. Además de esto, se actualiza la base de datos para restar el stock de los productos comprados. 
+
+Nota: Faltan terminar las funcionalidades de enviar la orden por mail y la de loggearse en la aplicación y poder inspeccionar la orden de compra desde allí. 
+
 -----
 
 ## <u>Componentes</u>:
